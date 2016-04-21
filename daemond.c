@@ -525,9 +525,15 @@ void check(tree_node_t *tree)
     
     if(tree->data->pid == PID_UNDEFINED)
     {
-        kill_all(tree->first_child);
+	if (tree->first_child != NULL)
+	{	
+            kill_all(tree->first_child);
+	}
         start_self(tree);
-        start_all(tree->first_child);
+	if (tree->first_child != NULL)
+	{	
+            start_all(tree->first_child);
+	}
     } 
     else 
     {
